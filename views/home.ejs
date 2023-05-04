@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+  </head>
+  <body>
+    <div class="email-form">
+        <h1><%= message%></h1>
+        <form class="email-form">
+            <label>email</label>
+            <input type="text" class="email"></input>
+            <label>contents</label>
+            <input type="text" class="contents"></input>
+            <label>time</label>
+            <input type="text" class="time"></input>
+            <input type="submit" value="submit"></input>
+        </form>
+    </div>
+  </body>
+  <script>
+    const emailForm = document.querySelector(".email-form");
+    
+    const submitBtn = emailForm.querySelector("input[type='submit']");
+
+    submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const emailInput = emailForm.querySelector(".email");
+        const contentsInput = emailForm.querySelector(".contents");
+        const timeInput = emailForm.querySelector(".time");
+        console.log(emailInput)
+        const email = emailInput.value;
+        const contents = contentsInput.value;
+        const time = timeInput.value;
+        const data = {
+            email,
+            contents,
+            time,
+        };
+        fetch("/send-mail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        }).then((res) => {
+            console.log(res);
+        })
+    });
+  </script>
+</html>
