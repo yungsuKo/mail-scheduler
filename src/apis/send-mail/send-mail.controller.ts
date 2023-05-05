@@ -17,7 +17,6 @@ export class SendMailController {
 
   @Post()
   create(@Body() createSendMailDto: CreateSendMailDto) {
-    console.log(createSendMailDto);
     return this.sendMailService.create(createSendMailDto);
   }
 

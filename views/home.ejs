@@ -16,8 +16,10 @@
             <input type="text" class="email"></input>
             <label>contents</label>
             <input type="text" class="contents"></input>
-            <label>time</label>
-            <input type="text" class="time"></input>
+            <label>min</label>
+            <input type="text" class="min"></input>
+            <label>sec</label>
+            <input type="text" class="sec"></input>
             <input type="submit" value="submit"></input>
         </form>
     </div>
@@ -31,15 +33,18 @@
         e.preventDefault();
         const emailInput = emailForm.querySelector(".email");
         const contentsInput = emailForm.querySelector(".contents");
-        const timeInput = emailForm.querySelector(".time");
+        const minInput = emailForm.querySelector(".min");
+        const secInput = emailForm.querySelector(".sec");
         console.log(emailInput)
         const email = emailInput.value;
         const contents = contentsInput.value;
-        const time = timeInput.value;
+        const min = minInput.value;
+        const sec = secInput.value;
         const data = {
             email,
             contents,
-            time,
+            min,
+            sec
         };
         fetch("/send-mail", {
             method: "POST",
