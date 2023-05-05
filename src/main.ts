@@ -10,6 +10,7 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('ejs');
   config();
+  // 초기 설정을 위한 코드가 추가되어야 함.
   await app.listen(3000);
 }
 bootstrap();
